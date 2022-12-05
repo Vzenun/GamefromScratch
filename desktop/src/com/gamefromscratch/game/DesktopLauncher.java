@@ -9,8 +9,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		//this below function is used to set the windows size actually
-		config.setWindowedMode(1280,960);
-		config.setForegroundFPS(60);
+		config.setWindowedMode(HelloWorld.WindowWIDTH,HelloWorld.WindowHEIGHT);
+		config.setForegroundFPS(80);
 		config.setTitle("HelloWorld");
 		new Lwjgl3Application(new HelloWorld(), config);
 	}
