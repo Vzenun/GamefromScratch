@@ -23,6 +23,8 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor, Se
 	SpriteBatch batch;
 	boolean movingright=false;
 	boolean movingleft=false;
+	boolean movingup=false;
+	boolean movingdown=false;
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -31,6 +33,12 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor, Se
 		}
 		if(keycode==Input.Keys.RIGHT){
 			movingright=true;
+		}
+		if(keycode==Input.Keys.UP){
+			movingup=true;
+		}
+		if(keycode==Input.Keys.DOWN){
+			movingdown=true;
 		}
 		return false;
 	}
@@ -43,6 +51,12 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor, Se
 		if(keycode==Input.Keys.RIGHT){
 			movingright=false;
 		}
+		if(keycode==Input.Keys.UP){
+			movingup=false;
+		}
+		if(keycode==Input.Keys.DOWN){
+			movingdown=false;
+		}
 		return false;
 	}
 
@@ -53,26 +67,44 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor, Se
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		//sprite.setPosition(screenX,Gdx.graphics.getHeight()-screenY);
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		//sprite.setPosition(screenX,Gdx.graphics.getHeight()-screenY);
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		//sprite.setPosition(screenX,Gdx.graphics.getHeight()-screenY);
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
+		//sprite.setPosition(screenX,Gdx.graphics.getHeight()-screenY);
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(float amountX, float amountY) {
+		//sprite.setPosition(sprite.getX()-amountX,sprite.getY()+amountY);
+		//OR
+//		if(amountX>0){
+//			sprite.translateX(2f);
+//		}
+//		else if(amountX<0){
+//			sprite.translateX(-2f);
+//		}
+		if(amountY>0){
+			sprite.translateY(2f);
+		}
+		else if(amountY<0){
+			sprite.translateY(-2f);
+		}
 		return false;
 	}
 
@@ -138,6 +170,12 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor, Se
 		}
 		if(movingright){
 			sprite.translateX(2f);
+		}
+		if(movingup){
+			sprite.translateY(2f);
+		}
+		if(movingdown){
+			sprite.translateY(-2f);
 		}
 //		Gdx.gl.glClearColor(1,1,1,1);
 //		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
